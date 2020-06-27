@@ -14,6 +14,7 @@ class Fswatch < Formula
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
+  depends_on "libtool" => :build
 
   # Integrate with pkg-config
   patch :p1 do
