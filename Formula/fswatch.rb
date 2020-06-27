@@ -24,7 +24,9 @@ class Fswatch < Formula
 
   def install
     ENV.cxx11
-    system "./configure", "--prefix=#{prefix}",
+    ENV["CONFIG_SHELL"] = "/bin/bash"
+    system "./configure", "CONFIG_SHELL=/bin/bash",
+                          "--prefix=#{prefix}",
                           "--disable-dependency-tracking",
                           "--disable-silent-rules"
     system "make", "install"
