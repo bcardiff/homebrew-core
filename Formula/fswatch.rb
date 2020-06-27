@@ -14,6 +14,7 @@ class Fswatch < Formula
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
+  depends_on "gettext" => :build
   depends_on "libtool" => :build
 
   # Integrate with pkg-config
@@ -24,9 +25,8 @@ class Fswatch < Formula
 
   def install
     ENV.cxx11
-    ENV["CONFIG_SHELL"] = "/bin/bash"
-    system "./configure", "CONFIG_SHELL=/bin/bash",
-                          "--prefix=#{prefix}",
+    system "autoreconf", "--install"
+    system "./configure", "--prefix=#{prefix}",
                           "--disable-dependency-tracking",
                           "--disable-silent-rules"
     system "make", "install"
