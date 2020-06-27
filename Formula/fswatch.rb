@@ -12,6 +12,15 @@ class Fswatch < Formula
     sha256 "9362bc3b3321bf0238fa70d2f2825e4118e18deb2207af3a2633b6772bb33666" => :sierra
   end
 
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
+
+  # Integrate with pkg-config
+  patch :p1 do
+    url "https://github.com/emcrisostomo/fswatch/commit/2d97a7661fa82c57a21873d7ec4435c3e4db76e3.patch?full_index=1"
+    sha256 "3a135e07610ed35c9edbb8a6009204dd0dc0f4ff6913cba30debee170cf1fa99"
+  end
+
   def install
     ENV.cxx11
     system "./configure", "--prefix=#{prefix}",
