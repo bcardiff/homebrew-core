@@ -55,10 +55,12 @@ class Llvm < Formula
     end
   end
 
-  livecheck do
-    url :homepage
-    regex(/LLVM (\d+.\d+.\d+)/i)
-  end
+  # TODO: Enable when 10.0.1 is fixed or 11.0.0 is released
+  #
+  # livecheck do
+  #   url :homepage
+  #   regex(/LLVM (\d+.\d+.\d+)/i)
+  # end
 
   bottle do
     cellar :any
