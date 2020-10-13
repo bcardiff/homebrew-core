@@ -92,6 +92,11 @@ class Llvm < Formula
   uses_from_macos "ncurses"
   uses_from_macos "zlib"
 
+  patch :p1 do
+    url "https://raw.githubusercontent.com/kubkon/formula-patches/2a9895f68da73902d4ce38455068b2ebb84bdc62/llvm/11.0.0-llvm.diff"
+    sha256 "e1c9a8c22b1744491b76a04834a3ef6b83e85b4e635821feed897f6a3d193d6f"
+  end
+
   def install
     projects = %w[
       clang
