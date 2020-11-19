@@ -2,7 +2,7 @@ class Crystal < Formula
   desc "Fast and statically typed, compiled language with Ruby-like syntax"
   homepage "https://crystal-lang.org/"
   license "Apache-2.0"
-  revision 1
+  revision 2
 
   stable do
     url "https://github.com/crystal-lang/crystal/archive/0.35.1.tar.gz"
@@ -33,6 +33,19 @@ class Crystal < Formula
     resource "shards" do
       url "https://github.com/crystal-lang/shards.git"
     end
+
+    resource "boot" do
+      on_macos do
+        url "https://github.com/crystal-lang/crystal/releases/download/0.35.1/crystal-0.35.1-1-darwin-x86_64.tar.gz"
+        version "0.35.1-1"
+        sha256 "7d75f70650900fa9f1ef932779bc23f79a199427c4219204fa9e221c330a1ab6"
+      end
+      on_linux do
+        url "https://github.com/crystal-lang/crystal/releases/download/0.35.1/crystal-0.35.1-1-linux-x86_64.tar.gz"
+        version "0.35.1-1"
+        sha256 "6c3fd36073b32907301b0a9aeafd7c8d3e9b9ba6e424ae91ba0c5106dc23f7f9"
+      end
+    end
   end
 
   depends_on "autoconf"      => :build # for building bdw-gc
@@ -43,7 +56,7 @@ class Crystal < Formula
   depends_on "gmp" # std uses it but it's not linked
   depends_on "libevent"
   depends_on "libyaml"
-  depends_on "llvm"
+  depends_on "llvm@9" # llvm@11 is not supported by Crystal and llvm@10 is not available
   depends_on "openssl@1.1" # std uses it but it's not linked
   depends_on "pcre"
   depends_on "pkg-config" # @[Link] will use pkg-config if available
